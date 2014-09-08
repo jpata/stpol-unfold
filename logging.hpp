@@ -93,6 +93,7 @@ template<class...ARGS> void log(LOGLEVEL level, const std::string& str, ARGS... 
             printf((toStr(level)+": "+str).c_str(),args...);
         }
     }
+    fflush(stdout);
 }
 void log(LOGLEVEL level, const std::string& str)
 {
@@ -107,6 +108,7 @@ void log(LOGLEVEL level, const std::string& str)
             printf("%s",(toStr(level)+": "+str).c_str());
         }
     }
+    fflush(stdout);
 }
 
 #endif
