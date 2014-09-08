@@ -13,3 +13,5 @@ histos
 unfoldPro
 neymanPro
 settings.mk
+*.bak
+*.png
