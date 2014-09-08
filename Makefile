@@ -15,16 +15,23 @@ clean:
 test:
 	./unfoldPro \
 		--histFile=$(DATADIR)/mu/merged/cos_theta_lj.root \
-		--responseFile=$(DATADIR)/mu/tmatrix_nocharge__gen_ele.root \
 		--responseFile=$(DATADIR)/mu/tmatrix_nocharge__gen_mu.root \
-		--responseFile=$(DATADIR)/mu/tmatrix_nocharge__gen_tau.root \
 		--fitResultPrefix=$(FITDIR) \
 		--fitResult=mu.txt \
 		--fitCovariance=mu_cov.root \
 		--sys=nominal \
 		$(REGMODE) \
-		--output=test.root
-
+		--output=test1.root
+	
+	./unfoldPro \
+		--histFile=$(DATADIR)/ele/merged/cos_theta_lj.root \
+		--responseFile=$(DATADIR)/ele/tmatrix_nocharge__gen_ele.root \
+		--fitResultPrefix=$(FITDIR) \
+		--fitResult=ele.txt \
+		--fitCovariance=ele_cov.root \
+		--sys=nominal \
+		$(REGMODE) \
+		--output=test2.root
 
 do_unfold_mu:
 	mkdir -p $(OUTPUTFOLDER)
