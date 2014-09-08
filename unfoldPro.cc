@@ -4,6 +4,7 @@
 #include "loadFitResult.hpp"
 #include "scanTau.hpp"
 #include "logging.hpp"
+#include "utils.hpp"
 
 #include "TH1F.h"
 #include "TH2F.h"
@@ -115,7 +116,7 @@ void doUnfolding(const std::vector<std::string>& histFiles,
     TH1F *unfoldedHist = new TH1F("unfolded","unfolded", REBIN_GEN, -1, 1);
 	tunfold.GetOutput(unfoldedHist);
 	unfoldedHist->Write();
-	
+    std::cout << "A=" << asymmetry(unfoldedHist) << std::endl;	
 	
 	TH2D *hrhoij = new TH2D("correlation","correlation",REBIN_GEN,1,REBIN_GEN,REBIN_GEN,1,REBIN_GEN);
 	tunfold.GetRhoIJ(hrhoij);
