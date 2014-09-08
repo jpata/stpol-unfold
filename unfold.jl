@@ -1,13 +1,13 @@
 using NLopt
 include("../analysis/base.jl");
 using SingleTopBase;
-using ROOT, ROOT.ROOTHistograms, Histograms;
+using ROOT, ROOTHistograms, Histograms;
 using PyCall, PyPlot;
 
 include("$BASE/src/analysis/hplot.jl");
 include("$BASE/src/analysis/python_plots.jl");
 
-const hist_path = "../../results/hists/Aug5/merged"
+const hist_path = "../../results/hists/$(ARGS[3])/merged"
 
 titles = {
     :mu=>"\$\\mu^\\pm\$, 2J1T, BDT>0.6",
@@ -20,11 +20,11 @@ const toload = ["unfolded", "gen", "correlation", "genrec",  "error"];
 const lepton = symbol(ARGS[1])
 const unfolded_histos = convert(ASCIIString, ARGS[2])
 const FITRESULTS = {
-    :mu=>FitResult("$BASE/results/fits/$(ARGS[3])/nominal/mu.json"),
-    :ele=>FitResult("$BASE/results/fits/$(ARGS[3])/nominal/ele.json"),
-    :combined=>FitResult("$BASE/results/fits/$(ARGS[3])/nominal/combined.json")
+    :mu=>FitResult("$BASE/results/fits/$(ARGS[4])/nominal/mu.json"),
+    :ele=>FitResult("$BASE/results/fits/$(ARGS[4])/nominal/ele.json"),
+    :combined=>FitResult("$BASE/results/fits/$(ARGS[4])/nominal/combined.json")
 }
-const bdt = "0.60000"
+const bdt = "etajprime_topmass_default"
 const BIAS = {:mu=>0.0183, :ele=>0.0333, :combined=>0.0240}
 
 #Load histograms
